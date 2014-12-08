@@ -1,7 +1,7 @@
 data <- read.csv("~/software/exdata/household_power_consumption.txt", sep=";")
 data$realDate <- as.Date(data$Date, '%d/%m/%Y')
 plotData <- subset(data, realDate >= as.Date('2007/02/01') & realDate <= as.Date('2007/02/02'))
-plotData$realGlobal_active_power <- as.numeric(plotData$Global_active_power)
+plotData$realGlobal_active_power <- as.numeric(as.vector(plotData$Global_active_power))
 png(filename = "plot1.png", width = 480, height = 480)
 hist(plotData$realGlobal_active_power, col="red", main = "Global Active Power", xlab="Global Active Power (kilowatts)")
 dev.off()
